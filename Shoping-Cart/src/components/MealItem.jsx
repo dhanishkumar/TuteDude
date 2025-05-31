@@ -15,12 +15,22 @@ const MealItem = ({ meal }) => {
   };
 
   return (
-    <div className="border p-4 mb-4 rounded shadow flex justify-between">
-      <div>
+    <div className="border p-4 mb-4 rounded shadow flex justify-between items-center gap-4">
+      {/* Image */}
+      <img
+        src={meal.image}
+        alt={meal.name}
+        className="w-24 h-24 object-cover rounded"
+      />
+
+      {/* Meal Info */}
+      <div className="flex-1">
         <h3 className="text-xl font-bold">{meal.name}</h3>
         <p className="text-sm italic">{meal.description}</p>
         <p className="font-bold text-blue-600">${meal.price.toFixed(2)}</p>
       </div>
+
+      {/* Add Form */}
       <form onSubmit={submitHandler} className="flex items-center gap-2">
         <input
           ref={amountRef}
@@ -29,7 +39,9 @@ const MealItem = ({ meal }) => {
           defaultValue="1"
           className="w-16 border px-2 py-1"
         />
-        <button className="bg-blue-600 text-white px-3 py-1 rounded">+ Add</button>
+        <button className="bg-blue-600 text-white px-3 py-1 rounded">
+          + Add
+        </button>
       </form>
     </div>
   );
